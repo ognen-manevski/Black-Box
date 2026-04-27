@@ -1,0 +1,19 @@
+-- fonts from google fonts, defaults: ---
+-- Display Fonts --
+IBM plex sans
+Sora
+ScienceGothic
+Cascadia 
+Martian
+Tektur
+Mozilla Headline + text
+Arimo
+StackSans+notch + headline
+SplineSans-VariableFont_wght
+Space_Mono
+Mulish
+Manrope
+Google_Sans
+-- Body Fonts --
+inter
+roboto

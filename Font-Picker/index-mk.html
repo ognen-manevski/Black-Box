@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="mk" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackBox Избор на Фонт</title>
+  <link rel="stylesheet" href="Source/CSS/main.css">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap">
+  </noscript>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================= -->
+  <nav class="navbar" role="navigation" aria-label="Главна навигација">
+    <div class="container">
+      <a href="#" class="navbar__brand" aria-label="BlackBox Избор на Фонт почетна">
+        <svg class="navbar__logo" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+        <span class="navbar__title">BlackBox Избор на Фонт</span>
+      </a>
+
+      <ul class="navbar__nav" role="list">
+        <li><a href="#font-picker">Избор на Фонт</a></li>
+        <li><a href="#desktop-mockup">Десктоп</a></li>
+        <li><a href="#mobile-mockup">Мобилен</a></li>
+        <li><a href="#alphabet">Азбука</a></li>
+        <li><a href="#logo-showcase">Логоа</a></li>
+      </ul>
+
+      <div class="navbar__controls">
+        <div class="lang-toggle" role="group" aria-label="Јазик">
+          <a href="index.html">EN</a>
+          <a href="index-mk.html" class="active" aria-current="page">MK</a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Промени тема" type="button">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1"  x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22"  x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1"  y1="12" x2="3"  y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       СЕКЦИЈА 1 — ИЗБОР НА ФОНТ
+  ============================================================= -->
+  <section id="font-picker">
+    <div class="container">
+      <p class="section-label">Секција 01</p>
+      <h2 class="section-title">Избор на Фонт</h2>
+
+      <div class="picker-layout">
+
+        <!-- Left: Controls -->
+        <aside class="picker-panel" aria-label="Контроли за фонт">
+
+          <!-- Heading Font Block -->
+          <div class="picker-panel__block">
+            <div class="picker-panel__head">
+              <span class="picker-panel__title">Фонт за наслов</span>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="headingFont">Типографија</label>
+              <select id="headingFont" aria-label="Избери фонт за наслов">
+                <!-- Populated by JS from fonts.json -->
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="headingWeight">Дебелина</label>
+              <div class="slider-row">
+                <input type="range" id="headingWeight" min="400" max="900" step="100" value="600" aria-label="Дебелина на фонт за наслов">
+                <span class="slider-value" id="headingWeightVal">600</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Body Font Block -->
+          <div class="picker-panel__block">
+            <div class="picker-panel__head">
+              <span class="picker-panel__title">Фонт за текст</span>
+            </div>
+
+            <div class="control-group">
+              <label class="checkbox-row" for="sameAsHeading">
+                <input type="checkbox" id="sameAsHeading" aria-label="Ист фонт како насловот">
+                <span>Ист како насловот</span>
+              </label>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="bodyFont">Типографија</label>
+              <select id="bodyFont" aria-label="Избери фонт за текст">
+                <!-- Populated by JS from fonts.json -->
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="bodyWeight">Дебелина</label>
+              <div class="slider-row">
+                <input type="range" id="bodyWeight" min="100" max="400" step="100" value="400" aria-label="Дебелина на фонт за текст">
+                <span class="slider-value" id="bodyWeightVal">400</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reset -->
+          <div class="picker-panel__footer">
+              <button class="btn btn--outline" id="resetFonts" type="button">Врати на почетно</button>
+          </div>
+
+        </aside>
+
+        <!-- Right: Preview -->
+        <div class="preview-panel" role="region" aria-label="Преглед на фонт">
+
+          <div class="preview-toolbar">
+            <span class="control-label" style="margin-bottom:0">Големина на преглед</span>
+            <button class="preview-size-btn" data-size="sm" type="button">Мал</button>
+            <button class="preview-size-btn active" data-size="md" type="button">Среден</button>
+            <button class="preview-size-btn" data-size="lg" type="button">Голем</button>
+          </div>
+
+          <div class="preview-area" id="previewArea" data-size="md">
+            <h1 class="preview-h1" contenteditable="true" spellcheck="false"
+                aria-label="Уредлив преглед на наслов">
+              BlackBox Solutions
+            </h1>
+            <h2 class="preview-h2" contenteditable="true" spellcheck="false"
+                aria-label="Уредлив преглед на поднаслов">
+              Паметен софтвер за современи тимови
+            </h2>
+            <p class="preview-body" contenteditable="true" spellcheck="false"
+               aria-label="Уредлив преглед на текст">
+              BlackBox Solutions е компанија за развој на софтвер фокусирана на изградба на ефикасни дигитални алатки и прилагодени веб платформи. Им помагаме на бизнисите да ги подобрат своите операции преку промислена технологија и сигурно инженерство.
+            </p>
+          </div>
+
+          <div class="font-meta" id="fontMeta" aria-live="polite">
+            <span>Наслов: <strong id="metaHeadingName">IBM Plex Sans</strong></span>
+            <span>Дебелина: <strong id="metaHeadingWeight">600</strong></span>
+            <span>Текст: <strong id="metaBodyName">Inter</strong></span>
+            <span>Дебелина: <strong id="metaBodyWeight">400</strong></span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       СЕКЦИЈА 2 — ДЕСКТОП МОКАП
+  ============================================================= -->
+  <section id="desktop-mockup">
+    <div class="container">
+      <p class="section-label">Секција 02</p>
+      <h2 class="section-title">Десктоп Мокап</h2>
+
+      <div class="mockup-frame" role="img" aria-label="Десктоп мокап на веб-сајт">
+
+        <header class="mk-header">
+          <div class="mk-header__brand">
+            <svg class="mk-header__logo" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            BlackBox Solutions
+          </div>
+          <nav class="mk-header__nav" aria-label="Навигација во мокапот">
+            <span>Услуги</span>
+            <span>За нас</span>
+            <span>Проекти</span>
+            <span>Контакт</span>
+          </nav>
+          <button class="mk-header__cta" type="button">Контактирајте нè</button>
+        </header>
+
+        <div class="mk-hero">
+          <p class="mk-hero__eyebrow">Софтвер и дигитални решенија</p>
+          <h1>Градиме <span class="text-gradient">софтвер</span> кој работи.</h1>
+          <p>BlackBox Solutions испорачува прилагодени веб апликации, алатки за автоматизација и дигитална инфраструктура за компании кои имаат потреба од сигурна, скалабилна технологија.</p>
+          <div class="mk-hero__actions">
+            <button class="mk-hero__btn-primary" type="button">Нашите услуги</button>
+            <button class="mk-hero__btn-secondary" type="button">Погледнете ги нашите проекти</button>
+          </div>
+        </div>
+
+        <div class="mk-cards">
+          <div class="mk-cards__grid">
+            <div class="mk-card">
+              <div class="mk-card__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <h3>Прилагоден развој</h3>
+              <p>Веб платформи и апликации изградени од нула за да ги исполнат вашите точни барања и работни текови.</p>
+            </div>
+            <div class="mk-card">
+              <div class="mk-card__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <h3>Дигитална стратегија</h3>
+              <p>Ги усогласуваме технолошките одлуки со деловните цели, од архитектурни избори до патокази на производот.</p>
+            </div>
+            <div class="mk-card">
+              <div class="mk-card__icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <h3>Одржување и поддршка</h3>
+              <p>Континуирана техничка поддршка, следење на перформансите и непрекинато подобрување на вашите производи.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mk-split">
+          <div class="mk-split__text">
+            <h2>Изградено за доверливост, дизајнирано за раст.</h2>
+            <p>Секој проект кој го преземаме го третираме како долгорочна инвестиција. Пишуваме чист, одржлив код и дизајнираме системи кои растат заедно со вашиот бизнис.</p>
+            <p>Од стартапи кои го лансираат својот прв производ до воспоставени компании кои ги модернизираат постојните системи, BlackBox Solutions испорачува резултати.</p>
+            <button class="btn btn--primary" type="button">Дознајте повеќе за нас</button>
+          </div>
+          <div class="mk-split__image" aria-label="Closeup BlackBox logo on a clean advertising totem render metal surface">
+            <img src="Source/Imgs/render-1.jpg" alt="Closeup BlackBox logo on a clean advertising totem render metal surface">
+          </div>
+        </div>
+
+        <div class="mk-gradient">
+          <div>
+            <h2>Подготвени за вашиот следен проект?</h2>
+            <p>Кажете ни што градите и ние ќе ви помогнеме да стигнете побрзо.</p>
+          </div>
+          <div class="mk-gradient__cta">
+            <button class="mk-hero__btn-primary" type="button">Започнете разговор</button>
+          </div>
+        </div>
+
+        <div class="mk-stats" role="list">
+          <div class="mk-stat" role="listitem">
+            <div class="mk-stat__number">50+</div>
+            <div class="mk-stat__label">Испорачани проекти</div>
+          </div>
+          <div class="mk-stat" role="listitem">
+            <div class="mk-stat__number">8+</div>
+            <div class="mk-stat__label">Години искуство</div>
+          </div>
+          <div class="mk-stat" role="listitem">
+            <div class="mk-stat__number">30+</div>
+            <div class="mk-stat__label">Клиенти ширум светот</div>
+          </div>
+          <div class="mk-stat" role="listitem">
+            <div class="mk-stat__number">99%</div>
+            <div class="mk-stat__label">Задоволство на клиентите</div>
+          </div>
+        </div>
+
+        <div class="mk-testimonial">
+          <blockquote>
+            „BlackBox Solutions ги трансформираше нашите операции со платформа која конечно одговара на начинот на кој навистина работиме. Резултатот беше побрз, почист и точно она што ни требаше.“
+          </blockquote>
+          <cite>Марко П., Директор за операции, TechCorp MK</cite>
+        </div>
+
+        <footer class="mk-footer">
+          <div class="mk-footer__brand">
+            <svg class="mk-footer__logo" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            BlackBox Solutions
+          </div>
+          <div class="mk-footer__links" aria-label="Линкови во подножјето">
+            <span>Услуги</span>
+            <span>За нас</span>
+            <span>Политика на приватност</span>
+            <span>Контакт</span>
+          </div>
+          <p class="mk-footer__copy">© 2025 BlackBox Solutions. Сите права задржани.</p>
+        </footer>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       СЕКЦИЈА 3 — МОБИЛЕН МОКАП
+  ============================================================= -->
+  <section id="mobile-mockup">
+    <div class="container">
+      <p class="section-label">Секција 03</p>
+      <h2 class="section-title">Мобилен Мокап</h2>
+
+      <div class="mobile-frame-wrapper">
+        <div class="mobile-frame" role="img" aria-label="Мобилен мокап на веб-сајт">
+
+          <div class="mobile-frame__notch" aria-hidden="true">
+            <div class="mobile-frame__notch-pill"></div>
+          </div>
+
+          <div class="mobile-frame__content">
+
+            <header class="mk-mob-header">
+              <svg class="mk-mob-header__logo" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+              <span class="mk-mob-header__title">BlackBox Solutions</span>
+              <div class="mk-mob-header__menu" aria-label="Мени" role="img">
+                <span></span><span></span><span></span>
+              </div>
+            </header>
+
+            <div class="mk-mob-hero">
+              <p class="mk-hero__eyebrow">Софтвер и дигитал</p>
+              <h1>Градиме <span class="text-gradient">софтвер</span> кој работи.</h1>
+              <p>Прилагодени платформи, дигитални алатки и сигурно инженерство за растечки бизниси.</p>
+              <a class="mk-mob-hero__btn">Нашите услуги</a>
+            </div>
+
+            <div class="mk-mob-cards">
+              <div class="mk-mob-card">
+                <div class="mk-mob-card__icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h3>Прилагоден развој</h3>
+                <p>Веб платформи изградени за вашите точни барања.</p>
+              </div>
+              <div class="mk-mob-card">
+                <div class="mk-mob-card__icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                </div>
+                <h3>Дигитална стратегија</h3>
+                <p>Технологија усогласена со вашите деловни цели.</p>
+              </div>
+              <div class="mk-mob-card">
+                <div class="mk-mob-card__icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <h3>Одржување и поддршка</h3>
+                <p>Континуирана техничка поддршка за вашите производи.</p>
+              </div>
+            </div>
+
+            <div class="mk-mob-gradient">
+              <h2>Подготвени за вашиот следен проект?</h2>
+              <p>Кажете ни што градите и ние ќе ви помогнеме да стигнете побрзо.</p>
+              <a class="mk-mob-hero__btn">Контактирајте нè</a>
+            </div>
+
+            <div class="mk-mob-stats" role="list">
+              <div class="mk-mob-stat" role="listitem">
+                <div class="mk-mob-stat__number">50+</div>
+                <div class="mk-mob-stat__label">Проекти</div>
+              </div>
+              <div class="mk-mob-stat" role="listitem">
+                <div class="mk-mob-stat__number">8+</div>
+                <div class="mk-mob-stat__label">Години</div>
+              </div>
+              <div class="mk-mob-stat" role="listitem">
+                <div class="mk-mob-stat__number">30+</div>
+                <div class="mk-mob-stat__label">Клиенти</div>
+              </div>
+              <div class="mk-mob-stat" role="listitem">
+                <div class="mk-mob-stat__number">99%</div>
+                <div class="mk-mob-stat__label">Задоволство</div>
+              </div>
+            </div>
+
+            <footer class="mk-mob-footer">
+              <div class="mk-mob-footer__brand">
+                <svg class="mk-mob-footer__logo" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+                BlackBox Solutions
+              </div>
+              <p class="mk-mob-footer__copy">© 2025 BlackBox Solutions</p>
+            </footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       СЕКЦИЈА 4 — АЗБУКА
+  ============================================================= -->
+  <section id="alphabet">
+    <div class="container">
+      <p class="section-label">Секција 04</p>
+      <h2 class="section-title">Азбука</h2>
+
+      <div class="alphabet-controls" role="group" aria-label="Приказ на азбука">
+        <button class="alphabet-tab active" data-view="both"     type="button">Двете</button>
+        <button class="alphabet-tab"        data-view="latin"    type="button">Латиница</button>
+        <button class="alphabet-tab"        data-view="cyrillic" type="button">Кирилица</button>
+      </div>
+
+      <div class="alphabet-grid" id="alphabetGrid" data-view="both">
+
+        <div class="alphabet-col alphabet-col--latin">
+          <p class="alphabet-col__label">Латиница</p>
+
+          <div class="alphabet-font-block alphabet-font-block--heading">
+            <p class="alphabet-font-block__tag">Фонт за наслов</p>
+            <div class="alphabet-chars" aria-label="Латинска голема азбука">
+              <span class="alphabet-char">A</span><span class="alphabet-char">B</span><span class="alphabet-char">C</span><span class="alphabet-char">D</span><span class="alphabet-char">E</span><span class="alphabet-char">F</span><span class="alphabet-char">G</span><span class="alphabet-char">H</span><span class="alphabet-char">I</span><span class="alphabet-char">J</span><span class="alphabet-char">K</span><span class="alphabet-char">L</span><span class="alphabet-char">M</span><span class="alphabet-char">N</span><span class="alphabet-char">O</span><span class="alphabet-char">P</span><span class="alphabet-char">Q</span><span class="alphabet-char">R</span><span class="alphabet-char">S</span><span class="alphabet-char">T</span><span class="alphabet-char">U</span><span class="alphabet-char">V</span><span class="alphabet-char">W</span><span class="alphabet-char">X</span><span class="alphabet-char">Y</span><span class="alphabet-char">Z</span>
+            </div>
+            <div class="alphabet-chars" aria-label="Латинска мала азбука">
+              <span class="alphabet-char">a</span><span class="alphabet-char">b</span><span class="alphabet-char">c</span><span class="alphabet-char">d</span><span class="alphabet-char">e</span><span class="alphabet-char">f</span><span class="alphabet-char">g</span><span class="alphabet-char">h</span><span class="alphabet-char">i</span><span class="alphabet-char">j</span><span class="alphabet-char">k</span><span class="alphabet-char">l</span><span class="alphabet-char">m</span><span class="alphabet-char">n</span><span class="alphabet-char">o</span><span class="alphabet-char">p</span><span class="alphabet-char">q</span><span class="alphabet-char">r</span><span class="alphabet-char">s</span><span class="alphabet-char">t</span><span class="alphabet-char">u</span><span class="alphabet-char">v</span><span class="alphabet-char">w</span><span class="alphabet-char">x</span><span class="alphabet-char">y</span><span class="alphabet-char">z</span>
+            </div>
+            <div class="alphabet-extras" aria-label="Цифри и интерпункција">
+              <span class="alphabet-char">0</span><span class="alphabet-char">1</span><span class="alphabet-char">2</span><span class="alphabet-char">3</span><span class="alphabet-char">4</span><span class="alphabet-char">5</span><span class="alphabet-char">6</span><span class="alphabet-char">7</span><span class="alphabet-char">8</span><span class="alphabet-char">9</span><span class="alphabet-char">!</span><span class="alphabet-char">?</span><span class="alphabet-char">.</span><span class="alphabet-char">,</span><span class="alphabet-char">:</span><span class="alphabet-char">-</span><span class="alphabet-char">&amp;</span>
+            </div>
+          </div>
+
+          <div class="alphabet-font-block alphabet-font-block--body">
+            <p class="alphabet-font-block__tag">Фонт за текст</p>
+            <div class="alphabet-chars">
+              <span class="alphabet-char">A</span><span class="alphabet-char">B</span><span class="alphabet-char">C</span><span class="alphabet-char">D</span><span class="alphabet-char">E</span><span class="alphabet-char">F</span><span class="alphabet-char">G</span><span class="alphabet-char">H</span><span class="alphabet-char">I</span><span class="alphabet-char">J</span><span class="alphabet-char">K</span><span class="alphabet-char">L</span><span class="alphabet-char">M</span><span class="alphabet-char">N</span><span class="alphabet-char">O</span><span class="alphabet-char">P</span><span class="alphabet-char">Q</span><span class="alphabet-char">R</span><span class="alphabet-char">S</span><span class="alphabet-char">T</span><span class="alphabet-char">U</span><span class="alphabet-char">V</span><span class="alphabet-char">W</span><span class="alphabet-char">X</span><span class="alphabet-char">Y</span><span class="alphabet-char">Z</span>
+            </div>
+            <div class="alphabet-chars">
+              <span class="alphabet-char">a</span><span class="alphabet-char">b</span><span class="alphabet-char">c</span><span class="alphabet-char">d</span><span class="alphabet-char">e</span><span class="alphabet-char">f</span><span class="alphabet-char">g</span><span class="alphabet-char">h</span><span class="alphabet-char">i</span><span class="alphabet-char">j</span><span class="alphabet-char">k</span><span class="alphabet-char">l</span><span class="alphabet-char">m</span><span class="alphabet-char">n</span><span class="alphabet-char">o</span><span class="alphabet-char">p</span><span class="alphabet-char">q</span><span class="alphabet-char">r</span><span class="alphabet-char">s</span><span class="alphabet-char">t</span><span class="alphabet-char">u</span><span class="alphabet-char">v</span><span class="alphabet-char">w</span><span class="alphabet-char">x</span><span class="alphabet-char">y</span><span class="alphabet-char">z</span>
+            </div>
+            <div class="alphabet-extras">
+              <span class="alphabet-char">0</span><span class="alphabet-char">1</span><span class="alphabet-char">2</span><span class="alphabet-char">3</span><span class="alphabet-char">4</span><span class="alphabet-char">5</span><span class="alphabet-char">6</span><span class="alphabet-char">7</span><span class="alphabet-char">8</span><span class="alphabet-char">9</span><span class="alphabet-char">!</span><span class="alphabet-char">?</span><span class="alphabet-char">.</span><span class="alphabet-char">,</span><span class="alphabet-char">:</span><span class="alphabet-char">-</span><span class="alphabet-char">&amp;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="alphabet-col alphabet-col--cyrillic">
+          <p class="alphabet-col__label">Кирилица (македонска)</p>
+
+          <div class="alphabet-font-block alphabet-font-block--heading">
+            <p class="alphabet-font-block__tag">Фонт за наслов</p>
+            <div class="alphabet-chars" aria-label="Кирилска голема азбука">
+              <span class="alphabet-char">А</span><span class="alphabet-char">Б</span><span class="alphabet-char">В</span><span class="alphabet-char">Г</span><span class="alphabet-char">Д</span><span class="alphabet-char">Ѓ</span><span class="alphabet-char">Е</span><span class="alphabet-char">Ж</span><span class="alphabet-char">З</span><span class="alphabet-char">Ѕ</span><span class="alphabet-char">И</span><span class="alphabet-char">Ј</span><span class="alphabet-char">К</span><span class="alphabet-char">Л</span><span class="alphabet-char">Љ</span><span class="alphabet-char">М</span><span class="alphabet-char">Н</span><span class="alphabet-char">Њ</span><span class="alphabet-char">О</span><span class="alphabet-char">П</span><span class="alphabet-char">Р</span><span class="alphabet-char">С</span><span class="alphabet-char">Т</span><span class="alphabet-char">Ќ</span><span class="alphabet-char">У</span><span class="alphabet-char">Ф</span><span class="alphabet-char">Х</span><span class="alphabet-char">Ц</span><span class="alphabet-char">Ч</span><span class="alphabet-char">Џ</span><span class="alphabet-char">Ш</span>
+            </div>
+            <div class="alphabet-chars" aria-label="Кирилска мала азбука">
+              <span class="alphabet-char">а</span><span class="alphabet-char">б</span><span class="alphabet-char">в</span><span class="alphabet-char">г</span><span class="alphabet-char">д</span><span class="alphabet-char">ѓ</span><span class="alphabet-char">е</span><span class="alphabet-char">ж</span><span class="alphabet-char">з</span><span class="alphabet-char">ѕ</span><span class="alphabet-char">и</span><span class="alphabet-char">ј</span><span class="alphabet-char">к</span><span class="alphabet-char">л</span><span class="alphabet-char">љ</span><span class="alphabet-char">м</span><span class="alphabet-char">н</span><span class="alphabet-char">њ</span><span class="alphabet-char">о</span><span class="alphabet-char">п</span><span class="alphabet-char">р</span><span class="alphabet-char">с</span><span class="alphabet-char">т</span><span class="alphabet-char">ќ</span><span class="alphabet-char">у</span><span class="alphabet-char">ф</span><span class="alphabet-char">х</span><span class="alphabet-char">ц</span><span class="alphabet-char">ч</span><span class="alphabet-char">џ</span><span class="alphabet-char">ш</span>
+            </div>
+          </div>
+
+          <div class="alphabet-font-block alphabet-font-block--body">
+            <p class="alphabet-font-block__tag">Фонт за текст</p>
+            <div class="alphabet-chars">
+              <span class="alphabet-char">А</span><span class="alphabet-char">Б</span><span class="alphabet-char">В</span><span class="alphabet-char">Г</span><span class="alphabet-char">Д</span><span class="alphabet-char">Ѓ</span><span class="alphabet-char">Е</span><span class="alphabet-char">Ж</span><span class="alphabet-char">З</span><span class="alphabet-char">Ѕ</span><span class="alphabet-char">И</span><span class="alphabet-char">Ј</span><span class="alphabet-char">К</span><span class="alphabet-char">Л</span><span class="alphabet-char">Љ</span><span class="alphabet-char">М</span><span class="alphabet-char">Н</span><span class="alphabet-char">Њ</span><span class="alphabet-char">О</span><span class="alphabet-char">П</span><span class="alphabet-char">Р</span><span class="alphabet-char">С</span><span class="alphabet-char">Т</span><span class="alphabet-char">Ќ</span><span class="alphabet-char">У</span><span class="alphabet-char">Ф</span><span class="alphabet-char">Х</span><span class="alphabet-char">Ц</span><span class="alphabet-char">Ч</span><span class="alphabet-char">Џ</span><span class="alphabet-char">Ш</span>
+            </div>
+            <div class="alphabet-chars">
+              <span class="alphabet-char">а</span><span class="alphabet-char">б</span><span class="alphabet-char">в</span><span class="alphabet-char">г</span><span class="alphabet-char">д</span><span class="alphabet-char">ѓ</span><span class="alphabet-char">е</span><span class="alphabet-char">ж</span><span class="alphabet-char">з</span><span class="alphabet-char">ѕ</span><span class="alphabet-char">и</span><span class="alphabet-char">ј</span><span class="alphabet-char">к</span><span class="alphabet-char">л</span><span class="alphabet-char">љ</span><span class="alphabet-char">м</span><span class="alphabet-char">н</span><span class="alphabet-char">њ</span><span class="alphabet-char">о</span><span class="alphabet-char">п</span><span class="alphabet-char">р</span><span class="alphabet-char">с</span><span class="alphabet-char">т</span><span class="alphabet-char">ќ</span><span class="alphabet-char">у</span><span class="alphabet-char">ф</span><span class="alphabet-char">х</span><span class="alphabet-char">ц</span><span class="alphabet-char">ч</span><span class="alphabet-char">џ</span><span class="alphabet-char">ш</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       СЕКЦИЈА 5 — ЛОГО НА ПОЗАДИНИ
+  ============================================================= -->
+  <section id="logo-showcase">
+    <div class="container">
+      <p class="section-label">Секција 05</p>
+      <h2 class="section-title">Лого на позадини</h2>
+
+      <!-- Вертикално -->
+      <p class="logo-subsection-label">Вертикално</p>
+      <div class="logo-grid logo-grid--vertical">
+
+        <div class="logo-tile logo-tile--white">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Бела позадина</span>
+        </div>
+
+        <div class="logo-tile logo-tile--black">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Црна позадина</span>
+        </div>
+
+        <div class="logo-tile logo-tile--brand">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Бранд сина</span>
+        </div>
+
+        <div class="logo-tile logo-tile--dark">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Темна позадина</span>
+        </div>
+
+        <div class="logo-tile logo-tile--gray">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Светло сива</span>
+        </div>
+
+        <div class="logo-tile logo-tile--gradient">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Бранд градиент</span>
+        </div>
+
+      </div><!-- /.logo-grid--vertical -->
+
+      <!-- Хоризонтално -->
+      <p class="logo-subsection-label">Хоризонтално</p>
+      <div class="logo-grid logo-grid--horizontal">
+
+        <div class="logo-tile logo-tile--white">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Бела позадина</span>
+        </div>
+
+        <div class="logo-tile logo-tile--black">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Црна позадина</span>
+        </div>
+
+        <div class="logo-tile logo-tile--brand">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Бранд сина</span>
+        </div>
+
+        <div class="logo-tile logo-tile--dark">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Темна позадина</span>
+        </div>
+
+        <div class="logo-tile logo-tile--gray">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Светло сива</span>
+        </div>
+
+        <div class="logo-tile logo-tile--gradient">
+          <div class="logo-tile__mark-group">
+            <svg class="logo-tile__svg" viewBox="0 0 200 200" aria-hidden="true" data-logo-mark></svg>
+            <div class="logo-tile__text">
+              <span class="logo-tile__line1">BlackBox</span>
+              <span class="logo-tile__line2">Solutions</span>
+            </div>
+          </div>
+          <span class="logo-tile__sub">Бранд градиент</span>
+        </div>
+
+      </div><!-- /.logo-grid--horizontal -->
+    </div>
+  </section>
+
+
+  <script src="Source/Scripts/main.js"></script>
+</body>
+</html>
