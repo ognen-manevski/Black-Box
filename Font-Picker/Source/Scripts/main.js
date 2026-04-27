@@ -65,8 +65,8 @@ function hasCyrillic(fontName) {
 function getCyrNoticeText() {
   if (document.documentElement.lang === 'mk') {
     return {
-      title: 'Без кирилска поддршка!',
-      sub:   'Прикажаниот фонт ќе го користи системскиот стандард.'
+      title: 'Нема кирилична поддршка!',
+      sub:   'Прикажаниот текст ќе го користи системскиот фонт.'
     };
   }
   return {
