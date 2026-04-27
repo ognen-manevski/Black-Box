@@ -66,7 +66,7 @@ function getCyrNoticeText() {
   if (document.documentElement.lang === 'mk') {
     return {
       title: 'Нема кирилична поддршка!',
-      sub:   'Прикажаниот текст ќе го користи системскиот фонт.'
+      sub:   'Ќе биде прикажан системскиот фонт.'
     };
   }
   return {
