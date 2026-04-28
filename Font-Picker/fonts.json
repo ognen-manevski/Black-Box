@@ -12,7 +12,8 @@
     { "name": "Manrope",         "cyrillic": true },
     { "name": "Roboto",          "cyrillic": true },
     { "name": "Inter",           "cyrillic": true },
-    { "name": "Google Sans",     "cyrillic": true }
+    { "name": "Google Sans",     "cyrillic": true },
+    { "name": "Noto Sans",       "cyrillic": true }
   ],
   "display": [
     { "name": "IBM Plex Sans",   "cyrillic": true  },
