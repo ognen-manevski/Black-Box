@@ -6,14 +6,16 @@
     "weightBody": 400
   },
   "body": [
-    { "name": "IBM Plex Sans", "cyrillic": true },
-    { "name": "Arimo",         "cyrillic": true },
-    { "name": "Mulish",        "cyrillic": true },
-    { "name": "Manrope",       "cyrillic": true },
-    { "name": "Roboto",        "cyrillic": true },
-    { "name": "Inter",         "cyrillic": true  }
+    { "name": "Arimo",           "cyrillic": true },
+    { "name": "Montserrat",      "cyrillic": true },
+    { "name": "Mulish",          "cyrillic": true },
+    { "name": "Manrope",         "cyrillic": true },
+    { "name": "Roboto",          "cyrillic": true },
+    { "name": "Inter",           "cyrillic": true },
+    { "name": "Google Sans",     "cyrillic": true }
   ],
   "display": [
+    { "name": "IBM Plex Sans",   "cyrillic": true  },
     { "name": "Tektur",          "cyrillic": true  },
     { "name": "Sora",            "cyrillic": false },
     { "name": "Science Gothic",  "cyrillic": true  },
@@ -22,7 +24,6 @@
     { "name": "Zilla Slab",      "cyrillic": false },
     { "name": "Stack Sans Notch","cyrillic": false },
     { "name": "Spline Sans",     "cyrillic": false },
-    { "name": "Space Mono",      "cyrillic": false },
-    { "name": "Google Sans",     "cyrillic": true  }
+    { "name": "Space Mono",      "cyrillic": false }
   ]
 }
